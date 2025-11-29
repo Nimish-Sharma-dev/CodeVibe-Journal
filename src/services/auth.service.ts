@@ -42,7 +42,8 @@ class AuthService {
                 user: {
                     id: data.user.id,
                     email: data.user.email!,
-                    full_name: fullName,
+                    full_name: fullName || null,
+                    avatar_url: null,
                 },
                 session: data.session,
             };
@@ -91,8 +92,8 @@ class AuthService {
                 user: {
                     id: data.user.id,
                     email: data.user.email!,
-                    full_name: profile?.full_name,
-                    avatar_url: profile?.avatar_url,
+                    full_name: profile?.full_name || null,
+                    avatar_url: profile?.avatar_url || null,
                 },
                 session: data.session,
             };

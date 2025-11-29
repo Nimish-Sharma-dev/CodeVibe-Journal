@@ -11,8 +11,8 @@ if (!supabaseUrl || !supabaseAnonKey) {
 
 // Admin client with service role key for server-side operations
 export const supabaseAdmin: SupabaseClient<Database> = createClient<Database>(
-    supabaseUrl,
-    supabaseServiceRoleKey || supabaseAnonKey,
+    supabaseUrl!,
+    (supabaseServiceRoleKey || supabaseAnonKey)!,
     {
         auth: {
             autoRefreshToken: false,
@@ -23,8 +23,8 @@ export const supabaseAdmin: SupabaseClient<Database> = createClient<Database>(
 
 // Regular client with anon key
 export const supabase: SupabaseClient<Database> = createClient<Database>(
-    supabaseUrl,
-    supabaseAnonKey
+    supabaseUrl!,
+    supabaseAnonKey!
 );
 
 /**
@@ -32,7 +32,7 @@ export const supabase: SupabaseClient<Database> = createClient<Database>(
  * Useful for operations that need to respect RLS policies
  */
 export function createUserClient(accessToken: string): SupabaseClient<Database> {
-    return createClient<Database>(supabaseUrl, supabaseAnonKey, {
+    return createClient<Database>(supabaseUrl!, supabaseAnonKey!, {
         global: {
             headers: {
                 Authorization: `Bearer ${accessToken}`,

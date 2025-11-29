@@ -2,7 +2,6 @@ import { supabaseAdmin } from '../config/supabase';
 import { DailyLog } from '../types/database';
 import { logger } from '../utils/logger';
 import { AppError } from '../middleware/error.middleware';
-import { formatDate } from '../utils/helpers';
 
 class LogService {
     /**

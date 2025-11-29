@@ -33,7 +33,7 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 // Request logging
-app.use((req, res, next) => {
+app.use((req, _res, next) => {
     logger.info(`${req.method} ${req.path}`, {
         ip: req.ip,
         userAgent: req.get('user-agent'),
@@ -42,7 +42,7 @@ app.use((req, res, next) => {
 });
 
 // Health check endpoint
-app.get('/health', (req: Request, res: Response) => {
+app.get('/health', (_req: Request, res: Response) => {
     res.json({
         success: true,
         message: 'Server is running',
@@ -58,7 +58,7 @@ app.use('/api/logs', apiLimiter, logRoutes);
 app.use('/api/activity', apiLimiter, activityRoutes);
 
 // Root endpoint
-app.get('/', (req: Request, res: Response) => {
+app.get('/', (_req: Request, res: Response) => {
     res.json({
         success: true,
         message: 'AI-Powered Developer Companion API',

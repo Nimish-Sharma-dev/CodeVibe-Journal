@@ -16,7 +16,7 @@ export const apiLimiter = rateLimit({
     },
     standardHeaders: true,
     legacyHeaders: false,
-    handler: (req: Request, res: Response) => {
+    handler: (_req: Request, res: Response) => {
         res.status(429).json({
             success: false,
             error: 'Too many requests, please try again later',

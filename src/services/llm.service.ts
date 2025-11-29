@@ -2,7 +2,6 @@ import OpenAI from 'openai';
 import { GitHubRepoMetadata, ScanResults, LLMAnalysis } from '../types/database';
 import { summaryPrompt, vibePrompt, difficultyPrompt, improvementPrompt } from '../prompts/analysis.prompts';
 import { logger } from '../utils/logger';
-import { AppError } from '../middleware/error.middleware';
 
 class LLMService {
     private client: OpenAI;
